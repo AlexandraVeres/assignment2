@@ -1,6 +1,8 @@
 package main.java.furniture.service;
 
 import main.java.furniture.dao.UsersDao;
+import main.java.furniture.factory.RaportFactory;
+import main.java.furniture.model.Raport;
 import main.java.furniture.model.User;
 
 import java.security.MessageDigest;
@@ -63,4 +65,14 @@ public class UserService {
         user.setPassword(hash(user.getPassword()));
         usersDao.updateUser(user);
     }
+    
+    public User getUserLogat() {
+    	return userAuthetificat;
+    }
+    
+    public String creazaRaport() {
+    	List<Raport> raportData = usersDao.genereazaRaport();
+    	return RaportFactory.getRaportGenerator().genereazaRaport(raportData);
+    }
+    
 }

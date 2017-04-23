@@ -5,6 +5,9 @@
  */
 package main.java.furniture.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author sandy
@@ -61,6 +64,13 @@ public class UserView extends javax.swing.JFrame {
         });
 
         adaugaProdus.setText("Adauga produs");
+        adaugaProdus.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ProdusView().showWindow();
+			}
+		});
 
         comezi.setText("Comenzi");
 

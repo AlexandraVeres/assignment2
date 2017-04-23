@@ -13,6 +13,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
+
 /**
  *
  * @author sandy
@@ -24,6 +34,36 @@ public class AdminView extends javax.swing.JFrame {
      */
     public AdminView() {
         initComponents();
+        createMenu();
+    }
+    
+    void createMenu() {
+    	JMenuBar menuBar;
+    	JMenu menu;
+    	menuBar = new JMenuBar();
+
+    	menu = new JMenu("Raport");
+    	menuBar.add(menu);
+    	
+    	menu.addMenuListener(new MenuListener() {
+			
+			@Override
+			public void menuSelected(MenuEvent e) {
+				String file = userService.creazaRaport();
+				JOptionPane.showMessageDialog(AdminView.this, "Raport generat in fisierul " + file,"Raport generat", JOptionPane.INFORMATION_MESSAGE);
+			}
+			
+			@Override
+			public void menuDeselected(MenuEvent e) {
+			}
+			
+			@Override
+			public void menuCanceled(MenuEvent e) {
+			}
+		});
+
+    	menuBar.add(menu);
+    	setJMenuBar(menuBar);
     }
 
     /**

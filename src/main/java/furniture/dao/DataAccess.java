@@ -16,7 +16,7 @@ public class DataAccess {
     private MysqlDataSource dataSource;
 
     public static DataAccess getInstance() {
-        return instance;
+        return instance; // asta ii un Singleton, ceea ce inseamna ca exista o singura instanta a acestei clase
     }
 
     private DataAccess() {

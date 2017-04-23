@@ -1,6 +1,7 @@
 package main.java.furniture.dao;
 
 import main.java.furniture.enums.TipUser;
+import main.java.furniture.model.Raport;
 import main.java.furniture.model.User;
 
 import java.sql.ResultSet;
@@ -74,4 +75,23 @@ public class UsersDao {
             throw new DaoException(e);
         }
     }
+    
+    public List<Raport> genereazaRaport() {
+    	try {
+			return DataAccess.getInstance().list("select u.nume,'modificat', p.id from produs p inner join users u on p.user = u.id", new Mapper<Raport>() {
+
+				@Override
+				public Raport map(ResultSet resultSet) throws SQLException {
+					Raport raport = new Raport();
+					raport.setUser(resultSet.getString(1));
+					raport.setActiune(resultSet.getString(2));
+					raport.setResourceId(resultSet.getInt(3));
+					return raport;
+				}
+			});
+		} catch (SQLException e) {
+			throw new DaoException(e);
+		}
+    }
+    
 }

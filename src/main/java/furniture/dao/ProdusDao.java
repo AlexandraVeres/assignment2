@@ -31,5 +31,17 @@ public class ProdusDao {
             throw new DaoException(e);
         }
     }
+    
+    public void create(Produs prod) {
+    	
+    	try {
+			DataAccess.getInstance().update("Insert into produs (nume,descriere,culoare,inaltime,latime,lungime,pret,stock,user,data)"
+					+ " VALUES (?,?,?,?,?,?,?,?,?,?)",new Object[] { prod.getNume(), 
+					prod.getDescriere(), prod.getCuloare(), prod.getInaltime(), prod.getLatime(), prod.getLungime(), prod.getPret(), 
+					prod.getStock(), prod.getUser().getId(), prod.getData()});
+		} catch (SQLException e) {
+			throw new DaoException(e);
+		}
+    }
 
 }

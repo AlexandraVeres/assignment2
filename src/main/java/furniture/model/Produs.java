@@ -1,5 +1,7 @@
 package main.java.furniture.model;
 
+import java.util.Date;
+
 public class Produs {
 
     private int id;
@@ -11,6 +13,8 @@ public class Produs {
     private double lungime;
     private double pret;
     private int stock;
+    private User user;
+    private Date data;
 
     public int getId() {
         return id;
@@ -87,5 +91,21 @@ public class Produs {
     public void reduStoc(int cantitate) {
         stock -= cantitate;
     }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 
 }
